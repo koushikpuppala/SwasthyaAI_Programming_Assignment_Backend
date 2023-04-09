@@ -10,6 +10,8 @@ class FriendService {
 		return await getFriends(userId, level)
 	}
 }
+
+// get all friends of a user by level
 export async function getFriends(userId: string, level: number): Promise<Friend[]> {
 	const friends: Friend[] = []
 
@@ -23,7 +25,10 @@ export async function getFriends(userId: string, level: number): Promise<Friend[
 		.populate('author', 'id')
 		.select('author -_id')
 
+	// get all unique friends
 	const friendIds = commentsOnSameBlogs.map((c) => c.author.id.toString())
+
+	// remove duplicates and remove the user itself
 	const uniqueFriends = Array.from(new Set(friendIds)).filter((id) => id !== userId)
 
 	// first level friends
