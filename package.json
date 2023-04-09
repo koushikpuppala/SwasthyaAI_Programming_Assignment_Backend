@@ -6,6 +6,9 @@
 	"directories": {
 		"doc": "/docs"
 	},
+	"engines": {
+		"node": ">=19.x"
+	},
 	"license": "MIT",
 	"scripts": {
 		"dev": "nodemon -r tsconfig-paths/register src/index.ts",
