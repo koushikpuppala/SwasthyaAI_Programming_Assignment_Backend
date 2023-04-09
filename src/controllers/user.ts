@@ -25,7 +25,7 @@ class UserController {
 		if (!user) {
 			res.status(404).json({ message: 'User not found' })
 		} else {
-			const friends = await FriendService.getNthLevelFriends(user, parseInt(level))
+			const friends = await FriendService.getFriendsByLevel(id, parseInt(level))
 			res.json(friends)
 		}
 	}
